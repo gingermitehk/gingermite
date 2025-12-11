@@ -1,0 +1,19 @@
+.page-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+}
+
+.main-wrapper {
+    flex: 1;
+    margin-left: 0;
+    padding-left: 0;
+    width: 100%;
+}
+
+@media (max-width: 480px) {
+    .main-wrapper {
+        margin-left: 0;
+        width: 100%;
+    }
+}

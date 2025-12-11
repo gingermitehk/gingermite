@@ -1,0 +1,321 @@
+/* ===========================
+   SHARED PAGE STYLES
+   =========================== */
+
+.page-content {
+    background-color: #faf8f5;
+    min-height: 100vh;
+    padding: var(--spacing-xl) 0;
+}
+
+.page-title {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 400;
+    color: var(--dark);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* ===========================
+   ABOUT PAGE
+   =========================== */
+
+.about-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.about-section h2 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: var(--spacing-md);
+}
+
+.about-section p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: var(--spacing-sm);
+}
+
+.services-list {
+    list-style: none;
+    padding: 0;
+}
+
+.services-list li {
+    font-size: 1.05rem;
+    color: #666;
+    padding: var(--spacing-xs) 0;
+    padding-left: var(--spacing-md);
+    position: relative;
+}
+
+.services-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--dark);
+    font-weight: bold;
+}
+
+/* ===========================
+   CONTACT PAGE
+   =========================== */
+
+.contact-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.contact-section h2 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: var(--spacing-md);
+}
+
+.contact-section p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: var(--spacing-sm);
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-md);
+}
+
+.contact-item h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: var(--spacing-xs);
+}
+
+.contact-item p {
+    font-size: 1rem;
+    color: #666;
+    margin: 0.25rem 0;
+}
+
+.contact-item a {
+    color: var(--dark);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.contact-item a:hover {
+    color: var(--molten-lava);
+}
+
+.social-links {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.social-link {
+    padding: var(--spacing-xs) var(--spacing-md);
+    background-color: var(--dark);
+    color: white;
+    text-decoration: none;
+    border: 1px solid var(--dark);
+    transition: all var(--transition-fast);
+}
+
+.social-link:hover {
+    background-color: transparent;
+    color: var(--dark);
+}
+
+.contact-form {
+    max-width: 650px;
+    margin-top: var(--spacing-lg);
+}
+
+.form-group {
+    margin-bottom: var(--spacing-lg);
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #888;
+    margin-bottom: var(--spacing-xs);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: var(--spacing-sm) 0;
+    font-size: 1.05rem;
+    color: var(--dark);
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    transition: border-color var(--transition-fast);
+    font-family: var(--font-primary);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-bottom-color: var(--dark);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+    padding-top: var(--spacing-sm);
+}
+
+.submit-button {
+    padding: var(--spacing-sm) var(--spacing-xl);
+    background-color: transparent;
+    color: var(--dark);
+    border: 1px solid var(--dark);
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    margin-top: var(--spacing-md);
+}
+
+.submit-button:hover {
+    background-color: var(--dark);
+    color: white;
+}
+
+/* ===========================
+   PRESS PAGE
+   =========================== */
+
+.press-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.press-section h2 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: var(--spacing-md);
+}
+
+.press-section p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: var(--spacing-sm);
+}
+
+.press-item {
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid #ddd;
+}
+
+.press-item:last-child {
+    border-bottom: none;
+}
+
+.press-item h3 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: var(--spacing-xs);
+}
+
+.press-description {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #888;
+    margin-bottom: var(--spacing-sm);
+}
+
+.press-excerpt {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #666;
+}
+
+.awards-list {
+    list-style: none;
+    padding: 0;
+}
+
+.awards-list li {
+    font-size: 1.05rem;
+    color: #666;
+    padding: var(--spacing-xs) 0;
+    padding-left: var(--spacing-md);
+    position: relative;
+}
+
+.awards-list li::before {
+    content: '★';
+    position: absolute;
+    left: 0;
+    color: var(--dark);
+}
+
+.download-button {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background-color: var(--dark);
+    color: white;
+    border: 1px solid var(--dark);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    margin-top: var(--spacing-sm);
+}
+
+.download-button:hover {
+    background-color: transparent;
+    color: var(--dark);
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2.2rem;
+    }
+
+    .about-section h2,
+    .contact-section h2,
+    .press-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+
+    .social-links {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title {
+        font-size: 1.8rem;
+    }
+
+    .page-content {
+        padding: var(--spacing-md) 0;
+    }
+}

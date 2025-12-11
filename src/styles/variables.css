@@ -1,0 +1,40 @@
+:root {
+    /* Color Palette */
+    --jasmine: #f2d479;
+    --molten-lava: #6f1a07;
+    --dark-coffee: #2b2118;
+    --old-rose: #cea0ae;
+    --shamrock: #4f9d69;
+
+    /* Lighter variations for sidebars */
+    --light-peach: #f5c5a9;
+    --light-lavender: #d4c5e2;
+    --light-sage: #b8d4a8;
+
+    /* Semantic Colors */
+    --primary: var(--jasmine);
+    --secondary: var(--shamrock);
+    --accent: var(--old-rose);
+    --dark: var(--dark-coffee);
+    --highlight: var(--molten-lava);
+
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 3rem;
+    --spacing-xl: 4rem;
+
+    /* Typography */
+    --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-heading: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+
+    /* Layout */
+    --sidebar-width: 420px;
+    --sidebar-collapsed-width: 60px;
+}

@@ -1,0 +1,533 @@
+/* ===========================
+   MEDIA HEADER
+   =========================== */
+.media-header {
+    min-height: 90vh;
+    background: rgba(242, 212, 121, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    color: var(--dark);
+    position: relative;
+    padding: 0 var(--spacing-xl);
+}
+
+.media-header::after {
+    content: 'Video or Media Content Placeholder';
+    opacity: 0.25;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.media-header-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    z-index: 10;
+}
+
+.media-logo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    position: absolute;
+    left: 14px;
+    top: var(--spacing-md);
+    height: 32px;
+}
+
+.media-logo .logo-img {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    display: block;
+    object-fit: contain;
+}
+
+.media-logo h1 {
+    font-family: Georgia;
+    font-size: 1.5rem;
+    color: var(--dark);
+    font-weight: normal;
+    margin: 0;
+}
+
+.media-slogan {
+    position: absolute;
+    right: 14px;
+    top: var(--spacing-md);
+}
+
+.media-slogan p {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--dark);
+    margin: 0;
+    letter-spacing: 1px;
+    text-transform: lowercase;
+}
+
+/* ===========================
+   HERO SECTION
+   =========================== */
+.hero-yellow {
+    background-color: var(--jasmine);
+    padding: var(--spacing-lg) 0;
+}
+
+.hero-yellow-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-xl);
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: var(--spacing-xl);
+    align-items: start;
+}
+
+@media (min-width: 1920px) {
+    .hero-yellow-content {
+        max-width: 1600px;
+    }
+}
+
+.hero-title {
+    padding-right: var(--spacing-md);
+}
+
+.hero-title h2 {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    color: var(--dark);
+    line-height: 1.2;
+    font-weight: 300;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+.hero-description {
+    padding-left: var(--spacing-sm);
+}
+
+.hero-description p {
+    font-size: 1rem;
+    color: var(--dark);
+    margin: 0 0 var(--spacing-md) 0;
+    line-height: 1.7;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-md);
+    background-color: transparent;
+    color: var(--dark);
+    font-weight: 500;
+    font-size: 0.8rem;
+    border: 1px solid var(--dark);
+    border-radius: 0;
+    transition: all var(--transition-fast);
+}
+
+.cta-button:hover {
+    background-color: var(--dark);
+    color: white;
+}
+
+/* ===========================
+   PORTFOLIO SECTION (RECENT PROJECTS)
+   =========================== */
+.portfolio-section {
+    padding: var(--spacing-xl) 0;
+    background-color: #faf8f5;
+}
+
+.content-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-xl);
+}
+
+@media (min-width: 1920px) {
+    .content-container {
+        max-width: 1600px;
+    }
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: var(--dark);
+    margin-bottom: var(--spacing-lg);
+    text-align: left;
+}
+
+.projects-container {
+    display: grid;
+    gap: var(--spacing-lg);
+    padding: 0 var(--spacing-md);
+}
+
+/* Default: 3 columns for large screens */
+@media (min-width: 1400px) {
+    .projects-container {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+}
+
+/* 2 columns for medium-large screens */
+@media (min-width: 900px) and (max-width: 1399px) {
+    .projects-container {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
+
+/* 1 column for smaller screens */
+@media (max-width: 899px) {
+    .projects-container {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+}
+
+/* ===========================
+   FILTER BAR
+   =========================== */
+.filter-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.filter-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.filter-label {
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    color: var(--dark);
+}
+
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.filter-tag {
+    padding: var(--spacing-xs) var(--spacing-md);
+    background-color: transparent;
+    color: var(--dark);
+    border: 1px solid var(--dark);
+    border-radius: 0;
+    font-weight: 400;
+    font-size: 0.9rem;
+    transition: all var(--transition-fast);
+}
+
+.filter-tag:hover {
+    background-color: var(--dark);
+    color: white;
+}
+
+.filter-tag.active {
+    background-color: var(--dark);
+    color: white;
+}
+
+/* ===========================
+   PROJECT CARDS
+   =========================== */
+.project-card {
+    background-color: white;
+    border-radius: 0;
+    overflow: hidden;
+    border: 1px solid #000;
+    transition: all var(--transition-normal);
+    opacity: 0;
+    transform: translateY(30px);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.project-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-card.hidden {
+    display: none;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+}
+
+.project-image {
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background-color: #faf8f5;
+    border-bottom: #000 solid 1px;
+    position: relative;
+}
+
+.carousel-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease;
+}
+
+.carousel-slide {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.project-card:hover .carousel-slide {
+    transform: scale(1.08);
+}
+
+/* Carousel controls */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity var(--transition-fast), background-color var(--transition-fast);
+    z-index: 2;
+    color: var(--dark);
+}
+
+.project-card:hover .carousel-btn {
+    opacity: 1;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.carousel-btn-prev {
+    left: 8px;
+}
+
+.carousel-btn-next {
+    right: 8px;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+}
+
+.carousel-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    padding: 0;
+    transition: all var(--transition-fast);
+}
+
+.carousel-indicator:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.carousel-indicator.active {
+    background-color: rgba(255, 255, 255, 1);
+    width: 24px;
+    border-radius: 4px;
+}
+
+.project-content {
+    padding: var(--spacing-md);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-content h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: var(--spacing-sm);
+}
+
+.project-content p {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+}
+
+.project-tags .tag {
+    padding: 0.3rem 0.8rem;
+    background-color: transparent;
+    color: var(--dark);
+    border-radius: 0;
+    font-size: 0.8rem;
+    font-weight: 400;
+    border: 1px solid #ddd;
+}
+
+/* ===========================
+   CLIENTS CAROUSEL
+   =========================== */
+.clients-section {
+    padding: var(--spacing-xl) 0;
+    background-color: white;
+    overflow: hidden;
+}
+
+.clients-carousel {
+    width: 100%;
+    overflow: hidden;
+    margin-top: var(--spacing-lg);
+}
+
+.clients-track {
+    display: flex;
+    gap: 4rem;
+    animation: scroll 30s linear infinite;
+}
+
+.client-logo {
+    flex-shrink: 0;
+    width: 180px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: grayscale(100%);
+    transition: filter var(--transition-normal);
+}
+
+.client-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* ===========================
+   RESPONSIVE - TABLET
+   =========================== */
+@media (max-width: 768px) {
+    .hero-yellow-content {
+        grid-template-columns: 1fr;
+        padding: 0 var(--spacing-md);
+    }
+
+    .hero-title h2 {
+        font-size: 2.2rem;
+    }
+
+    .project-image {
+        height: 350px;
+    }
+
+    .project-content {
+        padding: var(--spacing-md);
+    }
+
+    .project-content h3 {
+        font-size: 1.6rem;
+    }
+
+    .content-container {
+        padding: 0 var(--spacing-md);
+    }
+}
+
+/* ===========================
+   RESPONSIVE - MOBILE
+   =========================== */
+@media (max-width: 480px) {
+    .media-header {
+        min-height: 150px;
+    }
+
+    .media-header::after {
+        font-size: 0.9rem;
+    }
+
+    .hero-title h2 {
+        font-size: 1.8rem;
+    }
+
+    .hero-description p {
+        font-size: 1rem;
+    }
+
+    .project-image {
+        height: 250px;
+    }
+
+    .project-content h3 {
+        font-size: 1.4rem;
+    }
+
+    .project-content p {
+        font-size: 1rem;
+    }
+
+    .filter-bar {
+        gap: var(--spacing-xs);
+    }
+
+    .filter-tag {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .content-container {
+        padding: 0 var(--spacing-sm);
+    }
+}
