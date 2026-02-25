@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { monthlyFlowers } from '../data/monthlyFlowers';
+import siteContent from '../data/siteContent.json';
 
 const MediaHeader = () => {
   const [showEnglish, setShowEnglish] = useState(true);
@@ -22,8 +23,12 @@ const MediaHeader = () => {
   const { month, flower, zh_month, zh_flower } = monthlyFlowers[currentMonth];
   const capitalizedMonth = month.charAt(0).toUpperCase() + month.slice(1);
 
-  const englishText = `It is ${capitalizedMonth} in Hong Kong; the ${flower} are blooming.`;
-  const chineseText = `${zh_month}香港${zh_flower}正在盛開`;
+  const englishText = siteContent.flowerTemplate.en
+    .replace('{month}', capitalizedMonth)
+    .replace('{flower}', flower);
+  const chineseText = siteContent.flowerTemplate.zh
+    .replace('{zh_month}', zh_month)
+    .replace('{zh_flower}', zh_flower);
 
   return (
     <section className="media-header">

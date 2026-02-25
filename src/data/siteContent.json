@@ -1,0 +1,11 @@
+{
+  "hero": {
+    "title": "See what the universe has bloomed for you.",
+    "description": "Gingermite is a luxury flower shop located in Central Hong Kong, known for tailor-made bouquets and artistic floral creations. Inspired by fine art and storytelling, we offer flower delivery, workshops, and event styling for luxury brands and individuals. Every arrangement is a poetic expression made with the finest blooms.",
+    "ctaText": "Meet the Ginger & Mite"
+  },
+  "flowerTemplate": {
+    "en": "It is {month} in Hong Kong; the {flower} are blooming.",
+    "zh": "{zh_month}香港{zh_flower}正在盛開"
+  }
+}

@@ -60,6 +60,16 @@
     .btn-danger { background: #ef4444; color: #fff; }
     .btn-danger:hover:not(:disabled) { background: #dc2626; }
 
+    .btn-danger-soft {
+      background: transparent;
+      border: 1px solid #fca5a5;
+      color: #dc2626;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    .btn-danger-soft:hover:not(:disabled) { background: #fef2f2; border-color: #ef4444; }
+
     .btn-outline {
       background: transparent;
       border: 1px solid #d1d5db;
@@ -444,57 +454,65 @@
     /* Image previews */
     .img-thumb-row {
       display: flex;
-      gap: 10px;
+      gap: 12px;
       flex-wrap: wrap;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
     }
     .img-thumb-card {
       position: relative;
-      width: 100px;
+      width: 110px;
       border: 1px solid #e5e7eb;
-      border-radius: 6px;
+      border-radius: 8px;
       overflow: hidden;
       background: #fff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      transition: box-shadow 0.2s;
     }
+    .img-thumb-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
     .img-thumb-card img {
       width: 100%;
-      height: 80px;
+      height: 85px;
       object-fit: cover;
       display: block;
     }
     .img-thumb-card .img-thumb-name {
       font-size: 10px;
       color: #6b7280;
-      padding: 4px 6px;
+      padding: 5px 8px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      border-top: 1px solid #f3f4f6;
     }
     .img-thumb-card .img-thumb-remove {
       position: absolute;
-      top: 2px;
-      right: 2px;
-      width: 20px;
-      height: 20px;
-      background: rgba(239,68,68,0.9);
+      top: 4px;
+      right: 4px;
+      width: 22px;
+      height: 22px;
+      background: rgba(0,0,0,0.55);
       color: #fff;
       border: none;
       border-radius: 50%;
-      font-size: 12px;
-      line-height: 20px;
+      font-size: 14px;
+      line-height: 22px;
       text-align: center;
       cursor: pointer;
       padding: 0;
+      opacity: 0;
+      transition: opacity 0.15s;
     }
-    .img-thumb-card .img-thumb-remove:hover { background: #dc2626; }
+    .img-thumb-card:hover .img-thumb-remove { opacity: 1; }
+    .img-thumb-card .img-thumb-remove:hover { background: rgba(220,38,38,0.85); }
 
     .img-preview-single {
       max-width: 200px;
       max-height: 120px;
       object-fit: contain;
       border: 1px solid #e5e7eb;
-      border-radius: 6px;
-      margin-top: 6px;
+      border-radius: 8px;
+      margin-top: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
     }
 
     /* Upload button */
@@ -502,17 +520,17 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 6px 14px;
+      padding: 8px 16px;
       background: #f0f8f4;
       border: 1px dashed #4f9d69;
-      border-radius: 6px;
-      color: #4f9d69;
+      border-radius: 8px;
+      color: #3d8a57;
       font-size: 13px;
-      font-weight: 500;
+      font-weight: 600;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: all 0.2s;
     }
-    .upload-btn:hover { background: #e0f2e8; }
+    .upload-btn:hover { background: #e0f2e8; border-color: #3d8a57; }
     .upload-btn:disabled { opacity: 0.4; cursor: not-allowed; border-color: #d1d5db; color: #9ca3af; background: #f9fafb; }
 
     /* Slug field */
@@ -531,6 +549,7 @@
       font-size: 11px;
       color: #9ca3af;
       font-style: italic;
+      margin-top: 2px;
     }
 
     /* Image upload with URL */
@@ -540,6 +559,41 @@
       align-items: center;
     }
     .img-url-upload input { flex: 1; }
+
+    /* Template hint */
+    .template-hint {
+      font-size: 11px;
+      color: #6b7280;
+      margin-top: 4px;
+      padding: 6px 10px;
+      background: #f9fafb;
+      border-radius: 6px;
+      border: 1px solid #f3f4f6;
+    }
+    .template-hint code {
+      background: #e0f2e8;
+      color: #3d8a57;
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-family: 'SF Mono', Monaco, monospace;
+      font-size: 11px;
+    }
+
+    /* Section divider */
+    .section-divider {
+      border: none;
+      border-top: 1px solid #e5e7eb;
+      margin: 24px 0 20px;
+    }
+
+    /* Collapsible actions row */
+    .item-actions-row {
+      display: flex;
+      justify-content: flex-end;
+      padding-top: 12px;
+      margin-top: 12px;
+      border-top: 1px solid #f3f4f6;
+    }
 
     /* Monthly flowers table */
     .flowers-table {
@@ -664,6 +718,7 @@ const FILES = {
   contact: { path: 'src/data/contact.json', label: 'Contact' },
   clients: { path: 'src/data/clients.json', label: 'Clients' },
   monthlyFlowers: { path: 'src/data/monthlyFlowers.json', label: 'Monthly Flowers' },
+  siteContent: { path: 'src/data/siteContent.json', label: 'Site Content' },
 };
 
 // ─── State ────────────────────────────────────────────
@@ -785,6 +840,8 @@ async function switchTab(tab) {
   area.innerHTML = '<div style="text-align:center;padding:40px;color:#6b7280">Loading...</div>';
   try {
     await loadFile(tab);
+    // Misc tab uses two data files
+    if (tab === 'monthlyFlowers') await loadFile('siteContent');
     renderEditor(tab);
     updateDirtyIndicators();
     setStatus('Ready');
@@ -842,6 +899,10 @@ function revertChanges() {
     pendingImageOps = pendingImageOps.filter(op => !op.repoPath.startsWith('public/media/press/'));
   }
   fileCache[currentTab].data = JSON.parse(JSON.stringify(originalData[currentTab]));
+  // Also revert siteContent when on misc tab
+  if (currentTab === 'monthlyFlowers' && fileCache.siteContent && originalData.siteContent) {
+    fileCache.siteContent.data = JSON.parse(JSON.stringify(originalData.siteContent));
+  }
   renderEditor(currentTab);
   updateDirtyIndicators();
   setStatus('Reverted', 'success');
@@ -1258,7 +1319,7 @@ function renderProjectItem(item, i) {
               <input type="file" id="pj-${i}-file" accept="image/*" style="display:none" onchange="handleProjectImageUpload(${i}, this)">
             </div>
           </div>
-          <div style="text-align:right;margin-top:8px"><button class="btn-danger btn-small" onclick="removeProject(${i})">Delete Project</button></div>
+          <div class="item-actions-row"><button class="btn-danger-soft" onclick="removeProject(${i})">Delete Project</button></div>
         </div>
       </div>
     </div>`;
@@ -1299,32 +1360,41 @@ function renderPressEditor(data) {
 function renderPressItem(item, i) {
   const previewUrl = getPreviewUrl(item.image);
   const hasPreview = previewUrl && previewUrl.length > 0;
+  const title = item.title || '(untitled)';
 
   return `
-    <div class="array-item" data-drag-item draggable="true" ondragstart="handleDragStart(event,'press',${i})" ondragover="handleDragOver(event)" ondrop="handleDrop(event,'press',${i})" ondragend="handleDragEnd()">
-      <div class="array-item-header">
-        <div style="display:flex;align-items:center;gap:8px">
-          <span class="drag-handle">&#x2807;</span>
-          <span class="item-number">#${i + 1}: ${escapeHtml(item.source || '')}</span>
+    <div class="collapsible-item" data-drag-item draggable="true" ondragstart="handleDragStart(event,'press',${i})" ondragover="handleDragOver(event)" ondrop="handleDrop(event,'press',${i})" ondragend="handleDragEnd()">
+      <div class="collapsible-summary" onclick="toggleCollapsible(this)">
+        <div class="collapsible-left">
+          <span class="drag-handle" title="Drag to reorder">&#x2807;</span>
+          <span class="collapsible-num">#${i + 1}</span>
+          ${hasPreview ? `<img src="${escapeAttr(previewUrl)}" style="width:36px;height:36px;object-fit:cover;border-radius:4px;flex-shrink:0" onerror="this.style.display='none'">` : ''}
+          <span class="collapsible-title">${escapeHtml(title)}</span>
+          <span class="collapsible-meta">${escapeHtml(item.source || '')} &middot; ${escapeHtml(item.date || '')}</span>
         </div>
-        <button class="btn-danger btn-small" onclick="removePressItem(${i})">Delete</button>
+        <span class="collapsible-chevron">&#9654;</span>
       </div>
-      <div class="field-row">
-        <div class="field-group"><label>Source</label><input type="text" data-field="pr-${i}-source" value="${escapeAttr(item.source)}"></div>
-        <div class="field-group"><label>Date</label><input type="text" data-field="pr-${i}-date" value="${escapeAttr(item.date)}"></div>
-      </div>
-      <div class="field-group"><label>Title</label><input type="text" data-field="pr-${i}-title" value="${escapeAttr(item.title)}"></div>
-      <div class="field-group"><label>Subtitle</label><input type="text" data-field="pr-${i}-subtitle" value="${escapeAttr(item.subtitle)}"></div>
-      <div class="field-group"><label>Description</label><textarea data-field="pr-${i}-desc">${escapeHtml(item.description)}</textarea></div>
-      <div class="field-group"><label>URL</label><input type="text" data-field="pr-${i}-url" value="${escapeAttr(item.url)}"></div>
-      <div class="field-group">
-        <label>Image (URL or upload)</label>
-        <div class="img-url-upload">
-          <input type="text" data-field="pr-${i}-image" value="${escapeAttr(item.image)}" placeholder="Paste URL or upload...">
-          <button class="upload-btn btn-small" onclick="triggerPressImageUpload(${i})">&#8593; Upload</button>
-          <input type="file" id="pr-${i}-file" accept="image/*" style="display:none" onchange="handlePressImageUpload(${i}, this)">
+      <div class="collapsible-body">
+        <div style="margin-top:12px">
+          <div class="field-row">
+            <div class="field-group"><label>Source</label><input type="text" data-field="pr-${i}-source" value="${escapeAttr(item.source)}"></div>
+            <div class="field-group"><label>Date</label><input type="text" data-field="pr-${i}-date" value="${escapeAttr(item.date)}"></div>
+          </div>
+          <div class="field-group"><label>Title</label><input type="text" data-field="pr-${i}-title" value="${escapeAttr(item.title)}"></div>
+          <div class="field-group"><label>Subtitle</label><input type="text" data-field="pr-${i}-subtitle" value="${escapeAttr(item.subtitle)}"></div>
+          <div class="field-group"><label>Description</label><textarea data-field="pr-${i}-desc">${escapeHtml(item.description)}</textarea></div>
+          <div class="field-group"><label>URL</label><input type="text" data-field="pr-${i}-url" value="${escapeAttr(item.url)}"></div>
+          <div class="field-group">
+            <label>Image (URL or upload)</label>
+            <div class="img-url-upload">
+              <input type="text" data-field="pr-${i}-image" value="${escapeAttr(item.image)}" placeholder="Paste URL or upload...">
+              <button class="upload-btn btn-small" onclick="triggerPressImageUpload(${i})">&#8593; Upload</button>
+              <input type="file" id="pr-${i}-file" accept="image/*" style="display:none" onchange="handlePressImageUpload(${i}, this)">
+            </div>
+            ${hasPreview ? `<img src="${escapeAttr(previewUrl)}" class="img-preview-single" onerror="this.style.display='none'">` : ''}
+          </div>
+          <div class="item-actions-row"><button class="btn-danger-soft" onclick="removePressItem(${i})">Delete Article</button></div>
         </div>
-        ${hasPreview ? `<img src="${escapeAttr(previewUrl)}" class="img-preview-single" onerror="this.style.display='none'">` : ''}
       </div>
     </div>`;
 }
@@ -1360,7 +1430,7 @@ function renderAboutSection(section, i) {
           <span class="drag-handle">&#x2807;</span>
           <span class="item-number">Section #${i + 1}: ${escapeHtml(section.heading)}</span>
         </div>
-        <button class="btn-danger btn-small" onclick="removeAboutSection(${i})">Delete</button>
+        <button class="btn-danger-soft" onclick="removeAboutSection(${i})">Delete</button>
       </div>
       <div class="field-group"><label>Heading</label><input type="text" data-field="about-${i}-heading" value="${escapeAttr(section.heading)}"></div>
       ${contentHtml}
@@ -1409,7 +1479,7 @@ function renderContactEditor(data) {
         <div class="field-group" style="margin-bottom:0"><label>Name</label><input type="text" data-field="ct-social-${i}-name" value="${escapeAttr(link.name)}"></div>
         <div class="field-group" style="margin-bottom:0"><label>URL</label><input type="text" data-field="ct-social-${i}-url" value="${escapeAttr(link.url)}"></div>
       </div>
-      <div style="text-align:right;margin-top:6px"><button class="btn-danger btn-small" onclick="removeSocialLink(${i})">Delete</button></div>
+      <div style="text-align:right;margin-top:6px"><button class="btn-danger-soft" onclick="removeSocialLink(${i})">Delete</button></div>
     </div>`;
   });
   html += `</div><div class="array-controls"><button class="btn-outline btn-small" onclick="addSocialLink()">+ Add Social Link</button></div></div>`;
@@ -1438,7 +1508,7 @@ function renderClientsEditor(data) {
             <input type="file" id="cl-${i}-file" accept="image/*,.svg" style="display:none" onchange="handleClientLogoUpload(${i}, this)">
           </div>
         </div>
-        <button class="btn-danger btn-small" onclick="removeClient(${i})">Delete</button>
+        <button class="btn-danger-soft" onclick="removeClient(${i})">Delete</button>
       </div>
     </div>`;
   });
@@ -1448,8 +1518,31 @@ function renderClientsEditor(data) {
 
 // ── Misc (Monthly Flowers) ──
 function renderMiscEditor(data) {
-  let html = `<div class="editor-card"><h3>Monthly Flowers</h3>
-    <p style="font-size:13px;color:#6b7280;margin-bottom:16px">Edit the flower name displayed for each month in the site header.</p>
+  const sc = fileCache.siteContent ? fileCache.siteContent.data : { hero: { title: '', description: '', ctaText: '' }, flowerTemplate: { en: '', zh: '' } };
+
+  let html = `<div class="editor-card"><h3>Hero Section (Yellow Banner)</h3>
+    <p style="font-size:13px;color:#6b7280;margin-bottom:16px">The main yellow banner on the homepage.</p>
+    <div class="field-group"><label>Title</label><input type="text" data-field="sc-hero-title" value="${escapeAttr(sc.hero.title)}"></div>
+    <div class="field-group"><label>Description</label><textarea data-field="sc-hero-desc" style="min-height:100px">${escapeHtml(sc.hero.description)}</textarea></div>
+    <div class="field-group"><label>Button Text</label><input type="text" data-field="sc-hero-cta" value="${escapeAttr(sc.hero.ctaText)}"></div>
+  </div>`;
+
+  html += `<div class="editor-card"><h3>Flower Sentence Template</h3>
+    <p style="font-size:13px;color:#6b7280;margin-bottom:16px">The sentence in the header that alternates between English and Chinese. Use placeholders to insert the month and flower name.</p>
+    <div class="field-group">
+      <label>English Template</label>
+      <input type="text" data-field="sc-tpl-en" value="${escapeAttr(sc.flowerTemplate.en)}">
+      <div class="template-hint">Use <code>{month}</code> for the month name and <code>{flower}</code> for the flower name.</div>
+    </div>
+    <div class="field-group">
+      <label>Chinese Template</label>
+      <input type="text" data-field="sc-tpl-zh" value="${escapeAttr(sc.flowerTemplate.zh)}">
+      <div class="template-hint">Use <code>{zh_month}</code> for the Chinese month and <code>{zh_flower}</code> for the Chinese flower name.</div>
+    </div>
+  </div>`;
+
+  html += `<div class="editor-card"><h3>Monthly Flowers</h3>
+    <p style="font-size:13px;color:#6b7280;margin-bottom:16px">Set which flower is featured for each month of the year.</p>
     <table class="flowers-table">
       <thead><tr>
         <th>Month</th>
@@ -1483,7 +1576,10 @@ function collectFormData(tab) {
     case 'services': collectServices(data); break;
     case 'contact': collectContact(data); break;
     case 'clients': collectClients(data); break;
-    case 'monthlyFlowers': collectMonthlyFlowers(data); break;
+    case 'monthlyFlowers':
+      collectMonthlyFlowers(data);
+      if (fileCache.siteContent) collectSiteContent(fileCache.siteContent.data);
+      break;
   }
 }
 
@@ -1508,7 +1604,7 @@ function collectProjects(data) {
 function collectPress(data) {
   data.intro = getVal('press-intro');
   data.pressEmail = getVal('press-email');
-  const items = document.querySelectorAll('#press-items > .array-item');
+  const items = document.querySelectorAll('#press-items > .collapsible-item');
   data.articles = Array.from(items).map((el, i) => ({
     source: getVal(`pr-${i}-source`),
     title: getVal(`pr-${i}-title`),
@@ -1575,6 +1671,14 @@ function collectMonthlyFlowers(data) {
     item.flower = getVal(`mf-${i}-flower`);
     item.zh_flower = getVal(`mf-${i}-zh_flower`);
   });
+}
+
+function collectSiteContent(data) {
+  data.hero.title = getVal('sc-hero-title');
+  data.hero.description = getVal('sc-hero-desc');
+  data.hero.ctaText = getVal('sc-hero-cta');
+  data.flowerTemplate.en = getVal('sc-tpl-en');
+  data.flowerTemplate.zh = getVal('sc-tpl-zh');
 }
 
 // ─── Array Mutations ──────────────────────────────────
