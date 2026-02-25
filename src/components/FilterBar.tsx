@@ -5,11 +5,10 @@ interface FilterBarProps {
 
 const filters = [
   { value: 'all', label: 'All Projects' },
-  { value: 'weddings', label: 'Weddings' },
-  { value: 'events', label: 'Events' },
-  { value: 'bouquets', label: 'Bouquets' },
-  { value: 'installations', label: 'Installations' },
-  { value: 'seasonal', label: 'Seasonal' }
+  { value: 'installation', label: 'Installation' },
+  { value: 'workshop', label: 'Workshop' },
+  { value: 'gifting', label: 'Gifting' },
+  { value: 'other', label: 'Other' }
 ];
 
 const FilterBar = ({ activeFilter, onFilterChange }: FilterBarProps) => {
@@ -17,15 +16,15 @@ const FilterBar = ({ activeFilter, onFilterChange }: FilterBarProps) => {
     <div className="filter-section">
       <div className="filter-header">
         <span className="filter-label">FILTERS</span>
+      </div>
+      <div className="filter-bar">
         <button
           className={`filter-tag ${activeFilter === 'all' ? 'active' : ''}`}
           data-filter="all"
           onClick={() => onFilterChange('all')}
         >
-          All Projects
+          All
         </button>
-      </div>
-      <div className="filter-bar">
         {filters.slice(1).map(filter => (
           <button
             key={filter.value}

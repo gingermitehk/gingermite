@@ -36,7 +36,17 @@ const Footer = () => {
           </div>
         </div>
         <div className="footer-bottom">
-          <p>&copy; 2025 Gingermite Floral Studio. All rights reserved.</p>
+          <p>
+            <span className="copyright-wrapper">
+              <span className="copyright-symbol">
+                &copy;
+              </span>
+              <a href="https://brixton.zip" target="_blank" rel="noopener noreferrer" className="copyright-tooltip">
+                <span className="tooltip-line-1">Development & Design</span>
+                <span className="tooltip-line-2">brixton.zip</span>
+              </a>
+            </span> 2025 Gingermite Floral Studio. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

@@ -29,7 +29,7 @@ const MediaHeader = () => {
     <section className="media-header">
       <div className="media-header-top">
         <div className="media-logo">
-          <img src="/media/logo.png" alt="Gingermite Logo" className="logo-img" />
+          <span className="logo-img" aria-label="Gingermite Logo"></span>
           <h1>Gingermite</h1>
         </div>
         <div className="media-slogan">

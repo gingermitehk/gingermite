@@ -47,7 +47,13 @@
     height: 32px;
     flex-shrink: 0;
     display: block;
-    object-fit: contain;
+    -webkit-mask-image: url('/media/logo.png');
+    mask-image: url('/media/logo.png');
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    background-color: #000;
 }
 
 .media-logo h1 {
@@ -82,18 +88,20 @@
 }
 
 .hero-yellow-content {
-    max-width: 1400px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 0 var(--spacing-xl);
+    padding: 0 var(--spacing-md);
     display: grid;
     grid-template-columns: 1fr 1.2fr;
-    gap: var(--spacing-xl);
+    gap: var(--spacing-md);
     align-items: start;
 }
 
 @media (min-width: 1920px) {
     .hero-yellow-content {
-        max-width: 1600px;
+        max-width: 1300px;
+        padding: 0 var(--spacing-lg);
+        gap: var(--spacing-lg);
     }
 }
 
@@ -148,56 +156,97 @@
 }
 
 .content-container {
-    max-width: 1400px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 0 var(--spacing-xl);
+    padding: 0 var(--spacing-md);
 }
 
 @media (min-width: 1920px) {
     .content-container {
-        max-width: 1600px;
+        max-width: 1300px;
+        padding: 0 var(--spacing-lg);
     }
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-md);
+    gap: var(--spacing-sm);
+    overflow: visible;
 }
 
 .section-title {
     font-family: var(--font-heading);
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     font-weight: 400;
     color: var(--dark);
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: 0;
     text-align: left;
+}
+
+@media (min-width: 1920px) {
+    .section-title {
+        font-size: 2.5rem;
+    }
+}
+
+.portfolio-link {
+    font-size: 0.9rem;
+    color: var(--dark);
+    text-decoration: none;
+    transition: opacity var(--transition-fast);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+@media (min-width: 1920px) {
+    .portfolio-link {
+        font-size: 0.95rem;
+    }
+}
+
+.portfolio-link:hover {
+    opacity: 0.6;
 }
 
 .projects-container {
     display: grid;
-    gap: var(--spacing-lg);
-    padding: 0 var(--spacing-md);
+    gap: var(--spacing-md);
+    padding: 0;
+    grid-template-columns: 1fr;
+    margin: 0 auto;
 }
 
-/* Default: 3 columns for large screens */
-@media (min-width: 1400px) {
-    .projects-container {
-        grid-template-columns: repeat(3, 1fr);
-        max-width: 1600px;
-        margin: 0 auto;
-    }
-}
-
-/* 2 columns for medium-large screens */
-@media (min-width: 900px) and (max-width: 1399px) {
+/* Container queries - responsive to CONTENT area, not viewport */
+/* When content area is at least 700px wide, show 2 columns */
+@container main-content (min-width: 700px) {
     .projects-container {
         grid-template-columns: repeat(2, 1fr);
-        max-width: 1200px;
-        margin: 0 auto;
     }
 }
 
-/* 1 column for smaller screens */
-@media (max-width: 899px) {
+/* When content area is at least 1050px wide, show 3 columns */
+@container main-content (min-width: 1050px) {
     .projects-container {
-        grid-template-columns: 1fr;
-        max-width: 600px;
-        margin: 0 auto;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Fallback for browsers without container query support */
+@supports not (container-type: inline-size) {
+    @media (min-width: 768px) {
+        .projects-container {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (min-width: 1500px) {
+        .projects-container {
+            grid-template-columns: repeat(3, 1fr);
+        }
     }
 }
 
@@ -275,12 +324,12 @@
 }
 
 .project-card:hover {
-    transform: translateY(-4px);
+    /* Removed bobbing effect - image zoom is enough */
 }
 
 .project-image {
     width: 100%;
-    aspect-ratio: 4/3;
+    aspect-ratio: 3/2;
     overflow: hidden;
     background-color: #faf8f5;
     border-bottom: #000 solid 1px;
@@ -299,10 +348,11 @@
     height: 100%;
     object-fit: cover;
     flex-shrink: 0;
+    transition: transform 0.6s ease;
 }
 
 .project-card:hover .carousel-slide {
-    transform: scale(1.08);
+    transform: scale(1.05);
 }
 
 /* Carousel controls */
@@ -407,6 +457,17 @@
     font-size: 0.8rem;
     font-weight: 400;
     border: 1px solid #ddd;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.category-circle-card {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
 }
 
 /* ===========================

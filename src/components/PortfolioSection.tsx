@@ -24,7 +24,10 @@ const PortfolioSection = () => {
   return (
     <section className="portfolio-section" id="portfolio">
       <div className="content-container">
-        <h2 className="section-title">Recent Projects</h2>
+        <div className="section-header">
+          <h2 className="section-title">Recent Projects</h2>
+          <a href="/portfolio" className="portfolio-link">See full portfolio →</a>
+        </div>
         <FilterBar activeFilter={activeFilter} onFilterChange={handleFilterChange} />
         <div className="projects-container">
           {filteredProjects.map(project => (
@@ -35,7 +38,8 @@ const PortfolioSection = () => {
                 title: project.title,
                 description: project.description,
                 image: project.imagePath,
-                tags: [project.category]
+                tags: [project.category],
+                category: project.category
               }}
               isVisible={true}
             />

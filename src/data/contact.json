@@ -1,0 +1,17 @@
+{
+  "email": "hello@gingermite.com",
+  "phone": "(555) 123-4567",
+  "phoneHref": "tel:+85255512345",
+  "location": "Hong Kong",
+  "hours": [
+    "Monday - Saturday: 10:00 AM - 6:00 PM",
+    "Sunday: By appointment only"
+  ],
+  "collaborationsText": "Interested in creative collaborations with brands, event planners, photographers, and other creatives. Let's work together.",
+  "bookingNote": "For wedding and event inquiries, we recommend booking 3-6 months in advance. Last-minute requests welcomed when possible.",
+  "socialLinks": [
+    { "name": "Instagram", "url": "#" },
+    { "name": "Facebook", "url": "#" },
+    { "name": "Pinterest", "url": "#" }
+  ]
+}

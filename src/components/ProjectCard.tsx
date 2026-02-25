@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { categoryColors } from '../data/projectDatabase';
 
 export interface Project {
   id: number;
@@ -6,6 +7,7 @@ export interface Project {
   description: string;
   image: string | string[];
   tags: string[];
+  category?: string;
 }
 
 interface ProjectCardProps {
@@ -17,7 +19,7 @@ const ProjectCard = ({ project, isVisible }: ProjectCardProps) => {
   const cardRef = useRef<HTMLElement>(null);
   const images = Array.isArray(project.image) ? project.image : [project.image];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isSliding, setIsSliding] = useState(false);
+  const [_isSliding, _setIsSliding] = useState(false);
   const hasMultipleImages = images.length > 1;
 
   useEffect(() => {
@@ -110,6 +112,12 @@ const ProjectCard = ({ project, isVisible }: ProjectCardProps) => {
         <div className="project-tags">
           {project.tags.map(tag => (
             <span key={tag} className="tag">
+              {project.category && (
+                <span
+                  className="category-circle-card"
+                  style={{ backgroundColor: categoryColors[project.category as keyof typeof categoryColors] }}
+                />
+              )}
               {tag.charAt(0).toUpperCase() + tag.slice(1)}
             </span>
           ))}

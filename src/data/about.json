@@ -1,0 +1,35 @@
+{
+  "sections": [
+    {
+      "heading": "Our Story",
+      "paragraphs": [
+        "Gingermite is a mother and son floral studio based in Hong Kong, dedicated to creating beautiful, bespoke floral arrangements that celebrate life's most precious moments.",
+        "Founded on the principles of creativity, quality, and personal connection, we bring together traditional craftsmanship with contemporary design to create unforgettable floral experiences."
+      ]
+    },
+    {
+      "heading": "Our Philosophy",
+      "paragraphs": [
+        "We believe that flowers have the power to transform spaces and elevate emotions. Each arrangement we create is a unique expression of artistry, carefully crafted to reflect the personality and vision of our clients.",
+        "From intimate bouquets to grand installations, we approach every project with the same level of dedication and attention to detail, ensuring that each creation is truly one-of-a-kind."
+      ]
+    },
+    {
+      "heading": "What We Do",
+      "listItems": [
+        "Wedding florals and ceremony design",
+        "Corporate events and installations",
+        "Seasonal bouquets and arrangements",
+        "Custom floral sculptures and art pieces",
+        "Luxury brand collaborations",
+        "Private events and celebrations"
+      ]
+    },
+    {
+      "heading": "Based in Hong Kong",
+      "paragraphs": [
+        "Operating from the heart of Hong Kong, we draw inspiration from the city's vibrant energy and natural beauty. Our studio serves clients throughout Hong Kong and beyond, creating memorable floral experiences for weddings, corporate events, and special occasions."
+      ]
+    }
+  ]
+}

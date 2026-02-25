@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Apple",
+    "logo": "/media/logos/apple.png"
+  },
+  {
+    "name": "Gucci",
+    "logo": "/media/logos/gucci.svg"
+  },
+  {
+    "name": "Mercedes-Benz",
+    "logo": "/media/logos/mercedesbenz.png"
+  },
+  {
+    "name": "Mini Cooper",
+    "logo": "/media/logos/minicooper.png"
+  },
+  {
+    "name": "Prada",
+    "logo": "/media/logos/prada.jpg"
+  },
+  {
+    "name": "Tiffany's",
+    "logo": "/media/logos/tiffany.png"
+  }
+]

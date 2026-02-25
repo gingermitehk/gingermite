@@ -1,0 +1,743 @@
+[
+  {
+    "id": 1,
+    "title": "Dior Exotic Vase Arrangement",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/dior-exotic.jpg",
+      "/media/projects/dior-exotic2.jpg",
+      "/media/projects/dior-exotic3.jpg"
+    ],
+    "date": "2025-12-21",
+    "client": "Dior",
+    "description": "Exotic floral arrangements curated for Dior's holiday showcase."
+  },
+  {
+    "id": 2,
+    "title": "Gifting for Net-a-Porter",
+    "category": "gifting",
+    "imagePath": [
+      "/media/projects/net-a-porter.jpg"
+    ],
+    "date": "2025-12-14",
+    "client": "Net-a-Porter",
+    "description": "Bespoke VIP holiday gifting for Net-a-Porter."
+  },
+  {
+    "id": 3,
+    "title": "Gucci Xmas wreath workshop",
+    "category": "workshop",
+    "imagePath": [
+      "/media/projects/gucci-xmas.jpg",
+      "/media/projects/gucci-xmas2.jpg",
+      "/media/projects/gucci-xmas3.jpg",
+      "/media/projects/gucci-xmas4.jpg"
+    ],
+    "date": "2025-12-13",
+    "client": "Gucci",
+    "description": "Festive wreath-making workshop for Gucci's private clients."
+  },
+  {
+    "id": 4,
+    "title": "Gucci Gala Dinner 2025",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/gucci-gala.jpg",
+      "/media/projects/gucci-gala2.jpg",
+      "/media/projects/gucci-gala3.jpg"
+    ],
+    "date": "2025-12-12",
+    "client": "Gucci",
+    "description": "Grand scale floral installations for the annual Gucci Gala."
+  },
+  {
+    "id": 5,
+    "title": "Tiffany Dinner Long Table setup in blue theme",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/tiffany-blue.jpg",
+      "/media/projects/tiffany-blue2.jpg",
+      "/media/projects/tiffany-blue3.jpg",
+      "tiffany-blue4.jpg"
+    ],
+    "date": "2025-12-09",
+    "client": "Tiffany's",
+    "description": "Signature Tiffany Blue long table floral design."
+  },
+  {
+    "id": 6,
+    "title": "The Macallan House Xmas setup",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/macallan.jpg",
+      "/media/projects/macallan2.jpg",
+      "/media/projects/macallan3.jpg"
+    ],
+    "date": "2025-11-30",
+    "client": "Macallan",
+    "description": "Festive holiday styling for The Macallan House."
+  },
+  {
+    "id": 7,
+    "title": "Tiffany HJ event 2025",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/tiffany-hj.jpg",
+      "/media/projects/tiffany-hj2.jpg",
+      "/media/projects/tiffany-hj3.jpg"
+    ],
+    "date": "2025-11-28",
+    "client": "Tiffany's",
+    "description": "High Jewellery event floral installation."
+  },
+  {
+    "id": 8,
+    "title": "Miu Miu Christmas Wreath 2025",
+    "category": "workshop",
+    "imagePath": [
+      "/media/projects/miumiu-wreath.jpg",
+      "/media/projects/miumiu-wreath2.jpg",
+      "/media/projects/miumiu-wreath3.jpg"
+    ],
+    "date": "2025-11-28",
+    "client": "Miu Miu",
+    "description": "Seasonal floral workshop for Miu Miu's holiday season."
+  },
+  {
+    "id": 9,
+    "title": "Baccarat x MFK Xmas Wreath workshop",
+    "category": "workshop",
+    "imagePath": [
+      "/media/projects/baccarat-mfk.jpg",
+      "/media/projects/baccarat-mfk2.jpg",
+      "/media/projects/baccarat-mfk3.jpg",
+      "/media/projects/baccarat-mfk4.jpg"
+    ],
+    "date": "2025-11-25",
+    "client": "Baccarat",
+    "description": "Collaboration workshop with Baccarat and Maison Francis Kurkdjian."
+  },
+  {
+    "id": 10,
+    "title": "Studio Generale Charity - Tablescape",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/studio-generale.jpg",
+      "/media/projects/studio-generale2.jpg",
+      "/media/projects/studio-generale3.jpg",
+      "/media/projects/studio-generale4.jpg",
+      "/media/projects/studio-generale5.jpg",
+      "/media/projects/studio-generale6.jpg"
+    ],
+    "date": "2025-11-01",
+    "client": "Studio Generale",
+    "description": "Charity event tablescape design."
+  },
+  {
+    "id": 11,
+    "title": "Tiffany Private Floral workshop",
+    "category": "workshop",
+    "imagePath": [
+      "/media/projects/tiffany-workshop.jpg",
+      "/media/projects/tiffany-workshop2.jpg"
+    ],
+    "date": "2025-10-21",
+    "client": "Tiffany's",
+    "description": "Private floral design session for Tiffany's VIPs."
+  },
+  {
+    "id": 12,
+    "title": "Dior Murray House Flower Station",
+    "category": "workshop",
+    "imagePath": [
+      "/media/projects/dior-murray.jpg",
+      "/media/projects/dior-murray2.jpg"
+    ],
+    "date": "2025-10-21",
+    "client": "Dior",
+    "description": "Interactive flower station at the Murray House."
+  },
+  {
+    "id": 13,
+    "title": "AP Diner Table Setup at Macau",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/ap-macau.jpg",
+      "/media/projects/ap-macau2.jpg",
+      "/media/projects/ap-macau3.jpg",
+      "/media/projects/ap-macau4.jpg",
+      "/media/projects/ap-macau5.jpg",
+      "/media/projects/ap-macau6.jpg"
+    ],
+    "date": "2025-10-15",
+    "client": "AP",
+    "description": "Audemars Piguet dinner event in Macau."
+  },
+  {
+    "id": 14,
+    "title": "Bespoke Floral workshop 2025",
+    "category": "workshop",
+    "imagePath": [
+      "/media/projects/bespoke-2025.jpg",
+      "/media/projects/bespoke-20252.jpg",
+      "/media/projects/bespoke-20253.jpg"
+    ],
+    "date": "2025-10-05",
+    "client": "Landmark Bespoke",
+    "description": "Custom floral workshop for Landmark Bespoke members."
+  },
+  {
+    "id": 15,
+    "title": "Dior boutique Vase Arrangement - Lee Garden",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/dior-vase.jpg",
+      "/media/projects/dior-vase2.jpg"
+    ],
+    "date": "2025-09-28",
+    "client": "Dior",
+    "description": "In-boutique floral arrangements for Dior."
+  },
+  {
+    "id": 16,
+    "title": "Private Diner Table setup at Louise(PMQ)",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/louise-pmq.jpg",
+      "/media/projects/louise-pmq2.jpg",
+      "/media/projects/louise-pmq3.jpg"
+    ],
+    "date": "2025-09-26",
+    "client": "Marek",
+    "description": "Intimate dinner setup at Louise, PMQ."
+  },
+  {
+    "id": 17,
+    "title": "AP Diner Table Setup with Fruits at Henderson",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/ap-fruits.jpg",
+      "/media/projects/ap-fruits2.jpg",
+      "/media/projects/ap-fruits3.jpg"
+    ],
+    "date": "2025-09-22",
+    "client": "AP",
+    "description": "Floral and fruit tablescape for Audemars Piguet."
+  },
+  {
+    "id": 18,
+    "title": "Gifting for Baccarat",
+    "category": "gifting",
+    "imagePath": [
+      "/media/projects/baccarat-gifting.jpg"
+    ],
+    "date": "2025-07-09",
+    "client": "Baccarat",
+    "description": "Luxury floral gifting for Baccarat clients."
+  },
+  {
+    "id": 19,
+    "title": "Dior Fruit Cart setup 2025",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/dior-fruit.jpg",
+      "/media/projects/dior-fruit2.jpg",
+      "/media/projects/dior-fruit3.jpg"
+    ],
+    "date": "2025-06-20",
+    "client": "Dior",
+    "description": "Summer-themed fruit cart floral installation."
+  },
+  {
+    "id": 20,
+    "title": "Miu Miu boutique Flower Arrangement",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/miumiu-boutique.jpg",
+      "/media/projects/miumiu-boutique2.jpg"
+    ],
+    "date": "2025-06-19",
+    "client": "Miu Miu",
+    "description": "Elegant boutique arrangements for Miu Miu."
+  },
+  {
+    "id": 21,
+    "title": "Miu Miu FW2526 at K11",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/miumiu-k11.jpg",
+      "/media/projects/miumiu-k112.jpg",
+      "/media/projects/miumiu-k113.jpg"
+    ],
+    "date": "2025-05-28",
+    "client": "Miu Miu",
+    "description": "Fall/Winter collection installation at K11."
+  },
+  {
+    "id": 22,
+    "title": "King Fook Setup 2025",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/kingfook.jpg",
+      "/media/projects/kingfook2.jpg",
+      "/media/projects/kingfook3.jpg"
+    ],
+    "date": "2025-05-08",
+    "client": "King Fook",
+    "description": "High-end jewellery boutique floral setup."
+  },
+  {
+    "id": 23,
+    "title": "Baccarat Mother's Day Event",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/baccarat-mothers.jpg",
+      "/media/projects/baccarat-mothers2.jpg",
+      "/media/projects/baccarat-mothers3.jpg"
+    ],
+    "date": "2025-05-07",
+    "client": "Baccarat",
+    "description": "Mother's Day floral celebration at Baccarat."
+  },
+  {
+    "id": 24,
+    "title": "Burberry boutique Setup Spring 2025",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/burberry-spring.jpg",
+      "/media/projects/burberry-spring2.jpg"
+    ],
+    "date": "2025-04-30",
+    "client": "Burberry",
+    "description": "Spring seasonal floral installation for Burberry."
+  },
+  {
+    "id": 25,
+    "title": "Gingermite Landmark Bespoke Floral Workshop",
+    "category": "workshop",
+    "imagePath": [
+      "/media/projects/bespoke-workshop.jpg",
+      "/media/projects/bespoke-workshop2.jpg",
+      "/media/projects/bespoke-workshop3.jpg",
+      "/media/projects/bespoke-workshop4.jpg",
+      "/media/projects/bespoke-workshop5.jpg",
+      "/media/projects/bespoke-workshop6.jpg",
+      "/media/projects/bespoke-workshop7.jpg",
+      "/media/projects/bespoke-workshop8.jpg"
+    ],
+    "date": "2025-04-26",
+    "client": "Landmark Bespoke",
+    "description": "Collaboration floral workshop with Landmark."
+  },
+  {
+    "id": 26,
+    "title": "Gucci LMK Floral workshop",
+    "category": "workshop",
+    "imagePath": [
+      "/media/projects/gucci-lmk.jpg",
+      "/media/projects/gucci-lmk2.jpg"
+    ],
+    "date": "2025-04-11",
+    "client": "Gucci",
+    "description": "Floral workshop session held at Gucci Landmark."
+  },
+  {
+    "id": 27,
+    "title": "Dior Salon D' Exception 2025 Dinner Table setup",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/dior-salon.jpg",
+      "/media/projects/dior-salon2.jpg",
+      "/media/projects/dior-salon3.jpg",
+      "/media/projects/dior-salon4.jpg",
+      "/media/projects/dior-salon5.jpg",
+      "/media/projects/dior-salon6.jpg",
+      "/media/projects/dior-salon7.jpg"
+    ],
+    "date": "2025-04-07",
+    "client": "Dior",
+    "description": "Premium dinner tablescape for Dior Salon D' Exception."
+  },
+  {
+    "id": 28,
+    "title": "Grand Opening of Gingermite Landmark Shop",
+    "category": "other",
+    "imagePath": [
+      "/media/projects/gingermite-opening.jpg",
+      "/media/projects/gingermite-opening2.jpg",
+      "/media/projects/gingermite-opening3.jpg",
+      "/media/projects/gingermite-opening4.jpg",
+      "/media/projects/gingermite-opening5.jpg",
+      "/media/projects/gingermite-opening6.jpg",
+      "/media/projects/gingermite-opening7.jpg",
+      "/media/projects/gingermite-opening8.jpg"
+    ],
+    "date": "2025-03-31",
+    "client": "Gingermite",
+    "description": "Inaugural event for our Landmark boutique."
+  },
+  {
+    "id": 29,
+    "title": "Dior Lady Art boutique vase arrangement",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/dior-lady-art.jpg",
+      "/media/projects/dior-lady-art2.jpg",
+      "/media/projects/dior-lady-art3.jpg"
+    ],
+    "date": "2025-03-21",
+    "client": "Dior",
+    "description": "Floral art arrangements for the Dior Lady Art boutique."
+  },
+  {
+    "id": 30,
+    "title": "Roger Vivier Flower Wreath headband workshop",
+    "category": "workshop",
+    "imagePath": [
+      "/media/projects/rv-workshop.jpg",
+      "/media/projects/rv-workshop2.jpg",
+      "/media/projects/rv-workshop3.jpg"
+    ],
+    "date": "2025-03-13",
+    "client": "Roger Vivier",
+    "description": "Bespoke wreath headband workshop for Roger Vivier."
+  },
+  {
+    "id": 31,
+    "title": "Dior Women's Day Flower Cart Workshop",
+    "category": "workshop",
+    "imagePath": [
+      "/media/projects/dior-womens.jpg",
+      "/media/projects/dior-womens2.jpg",
+      "/media/projects/dior-womens3.jpg"
+    ],
+    "date": "2025-03-04",
+    "client": "Dior",
+    "description": "Women's Day celebratory flower cart experience."
+  },
+  {
+    "id": 32,
+    "title": "Bvlgari CNY Flower arrangement workshop",
+    "category": "workshop",
+    "imagePath": [
+      "/media/projects/bvlgari-cny.jpg",
+      "/media/projects/bvlgari-cny2.jpg",
+      "/media/projects/bvlgari-cny3.jpg"
+    ],
+    "date": "2025-01-07",
+    "client": "Bvlgari",
+    "description": "Chinese New Year floral workshop for Bvlgari."
+  },
+  {
+    "id": 33,
+    "title": "Gucci Dinner Table setup at Macau",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/gucci-macau.jpg",
+      "/media/projects/gucci-macau2.jpg",
+      "/media/projects/gucci-macau3.jpg"
+    ],
+    "date": "2024-12-28",
+    "client": "Gucci",
+    "description": "Exquisite dinner table setup for Gucci in Macau."
+  },
+  {
+    "id": 34,
+    "title": "Tiffany's Blue Box Cafe Dinner Table setup",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/tiffany-bluebox.jpg",
+      "/media/projects/tiffany-bluebox2.jpg",
+      "/media/projects/tiffany-bluebox3.jpg"
+    ],
+    "date": "2024-12-09",
+    "client": "Tiffany's",
+    "description": "Dinner floral styling at the Tiffany Blue Box Cafe."
+  },
+  {
+    "id": 35,
+    "title": "Tiffany's Christmas Wreath workshop 2024",
+    "category": "workshop",
+    "imagePath": [
+      "/media/projects/tiffany-wreath.jpg",
+      "/media/projects/tiffany-wreath2.jpg",
+      "/media/projects/tiffany-wreath3.jpg"
+    ],
+    "date": "2024-12-05",
+    "client": "Tiffany's",
+    "description": "Holiday wreath workshop for Tiffany & Co."
+  },
+  {
+    "id": 36,
+    "title": "HERE!! Debeers Xmas Tree workshop 2024",
+    "category": "workshop",
+    "imagePath": [
+      "/media/projects/debeers-xmas.jpg",
+      "/media/projects/debeers-xmas2.jpg",
+      "/media/projects/debeers-xmas3.jpg"
+    ],
+    "date": "2024-11-28",
+    "client": "Debeers",
+    "description": "Festive Christmas tree design workshop for Debeers."
+  },
+  {
+    "id": 37,
+    "title": "L'ecole Dinner Table setup",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/lecole-table.jpg",
+      "/media/projects/lecole-table2.jpg",
+      "/media/projects/lecole-table3.jpg"
+    ],
+    "date": "2024-11-12",
+    "client": "L'ecole",
+    "description": "Sophisticated dinner setup for L'ecole."
+  },
+  {
+    "id": 38,
+    "title": "L'ecole 5th Anniversary Exhibition",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/lecole-anniv.jpg",
+      "/media/projects/lecole-anniv2.jpg",
+      "/media/projects/lecole-anniv3.jpg"
+    ],
+    "date": "2024-11-11",
+    "client": "L'ecole",
+    "description": "Exhibition floral design celebrating 5 years of L'ecole."
+  },
+  {
+    "id": 39,
+    "title": "Gucci Bespoke Workshop in Red",
+    "category": "workshop",
+    "imagePath": [
+      "/media/projects/gucci-red.jpg",
+      "/media/projects/gucci-red2.jpg",
+      "/media/projects/gucci-red3.jpg"
+    ],
+    "date": "2024-11-02",
+    "client": "Gucci",
+    "description": "Signature red-themed floral workshop for Gucci."
+  },
+  {
+    "id": 40,
+    "title": "Dior OSV Cruise",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/dior-cruise.jpg",
+      "/media/projects/dior-cruise2.jpg",
+      "/media/projects/dior-cruise3.jpg"
+    ],
+    "date": "2024-10-22",
+    "client": "Dior",
+    "description": "Floral installations for the Dior Cruise collection."
+  },
+  {
+    "id": 41,
+    "title": "Moncler Dinner Table setup at Shanghai",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/moncler-shanghai.jpg",
+      "/media/projects/moncler-shanghai2.jpg",
+      "/media/projects/moncler-shanghai3.jpg"
+    ],
+    "date": "2024-10-17",
+    "client": "Moncler",
+    "description": "Luxury dinner setup for Moncler in Shanghai."
+  },
+  {
+    "id": 42,
+    "title": "HERE!!! Krug Champagne Edible Flower workshop",
+    "category": "workshop",
+    "imagePath": [
+      "/media/projects/krug.jpg",
+      "/media/projects/krug2.jpg",
+      "/media/projects/krug3.jpg"
+    ],
+    "date": "2024-10-13",
+    "client": "Krug",
+    "description": "Creative edible flower workshop with Krug Champagne."
+  },
+  {
+    "id": 43,
+    "title": "TOD's long table dinner setup",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/tods.jpg",
+      "/media/projects/tods2.jpg",
+      "/media/projects/tods3.jpg"
+    ],
+    "date": "2024-10-09",
+    "client": "Tod's",
+    "description": "Long table floral setup for Tod's."
+  },
+  {
+    "id": 44,
+    "title": "Moncler centrepieces for VIP",
+    "category": "gifting",
+    "imagePath": [
+      "/media/projects/moncler-vip.jpg",
+      "/media/projects/moncler-vip2.jpg",
+      "/media/projects/moncler-vip3.jpg"
+    ],
+    "date": "2024-09-19",
+    "client": "Moncler",
+    "description": "Exclusive VIP floral centrepieces for Moncler."
+  },
+  {
+    "id": 45,
+    "title": "Cova Shanghai Flower Workshop",
+    "category": "workshop",
+    "imagePath": [
+      "/media/projects/cova-workshop.jpg",
+      "/media/projects/cova-workshop2.jpg",
+      "/media/projects/cova-workshop3.jpg"
+    ],
+    "date": "2024-08-21",
+    "client": "Cova",
+    "description": "Floral workshop session with Cova in Shanghai."
+  },
+  {
+    "id": 46,
+    "title": "Dior Four Seasons Installation 2024",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/dior-4s.jpg",
+      "/media/projects/dior-4s2.jpg",
+      "/media/projects/dior-4s3.jpg"
+    ],
+    "date": "2024-08-12",
+    "client": "Dior",
+    "description": "Large scale floral installation at the Four Seasons for Dior."
+  },
+  {
+    "id": 47,
+    "title": "Sotheby's Installation",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/sothebys.jpg",
+      "/media/projects/sothebys2.jpg",
+      "/media/projects/sothebys3.jpg"
+    ],
+    "date": "2024-07-26",
+    "client": "Sotheby's",
+    "description": "Artistic floral installation for Sotheby's."
+  },
+  {
+    "id": 48,
+    "title": "Loro Piana Resort 2024",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/loro-piana.jpg",
+      "/media/projects/loro-piana2.jpg",
+      "/media/projects/loro-piana3.jpg"
+    ],
+    "date": "2024-06-19",
+    "client": "Loro Piana",
+    "description": "Planting design for Loro Piana Resort 2024."
+  },
+  {
+    "id": 49,
+    "title": "Davis Polk 2024 workshop",
+    "category": "workshop",
+    "imagePath": [
+      "/media/projects/davispolk.jpg",
+      "/media/projects/davispolk2.jpg",
+      "/media/projects/davispolk3.jpg"
+    ],
+    "date": "2024-06-14",
+    "client": "Davis Polk",
+    "description": "Corporate floral workshop for Davis Polk."
+  },
+  {
+    "id": 50,
+    "title": "Tiffany Blue Book Event 2024",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/tiffany-bluebook.jpg",
+      "/media/projects/tiffany-bluebook2.jpg",
+      "/media/projects/tiffany-bluebook3.jpg"
+    ],
+    "date": "2024-06-05",
+    "client": "Tiffany's",
+    "description": "Floral setup for the Tiffany Blue Book event."
+  },
+  {
+    "id": 51,
+    "title": "Prada Fine Jewellery 2023",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/prada-2023.jpg",
+      "/media/projects/prada-20232.jpg",
+      "/media/projects/prada-20233.jpg"
+    ],
+    "date": "2024-05-21",
+    "client": "Prada",
+    "description": "Floral installation for Prada's Fine Jewellery collection."
+  },
+  {
+    "id": 52,
+    "title": "Burberry Mother's Day workshop 2024",
+    "category": "workshop",
+    "imagePath": [
+      "/media/projects/burberry-mothers.jpg",
+      "/media/projects/burberry-mothers2.jpg",
+      "/media/projects/burberry-mothers3.jpg"
+    ],
+    "date": "2024-05-10",
+    "client": "Burberry",
+    "description": "Mother's Day floral workshop for Burberry."
+  },
+  {
+    "id": 53,
+    "title": "Roger Vivier Flower Wall",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/rv-wall.jpg",
+      "/media/projects/rv-wall2.jpg",
+      "/media/projects/rv-wall3.jpg"
+    ],
+    "date": "2024-05-06",
+    "client": "Roger Vivier",
+    "description": "Stunning brand flower wall for Roger Vivier."
+  },
+  {
+    "id": 54,
+    "title": "Miu Miu Pressed Flower workshop (Asia Pacific)",
+    "category": "workshop",
+    "imagePath": [
+      "/media/projects/miumiu-pressed.jpg",
+      "/media/projects/miumiu-pressed2.jpg",
+      "/media/projects/miumiu-pressed3.jpg"
+    ],
+    "date": "2024-04-18",
+    "client": "Miu Miu",
+    "description": "Pressed flower workshop series across Asia Pacific."
+  },
+  {
+    "id": 55,
+    "title": "Gucci Ancora Dinner Table setup & workshop",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/gucci-ancora.jpg",
+      "/media/projects/gucci-ancora2.jpg",
+      "/media/projects/gucci-ancora3.jpg"
+    ],
+    "date": "2024-02-22",
+    "client": "Gucci",
+    "description": "Comprehensive installation and workshop for Gucci Ancora."
+  },
+  {
+    "id": 56,
+    "title": "Tiffany HJ Caravan 2024",
+    "category": "installation",
+    "imagePath": [
+      "/media/projects/tiffany-caravan.jpg",
+      "/media/projects/tiffany-caravan2.jpg",
+      "/media/projects/tiffany-caravan3.jpg"
+    ],
+    "date": "2024-02-15",
+    "client": "Tiffany's",
+    "description": "Floral installations for the Tiffany HJ Caravan."
+  }
+]
