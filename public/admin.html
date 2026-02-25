@@ -203,6 +203,11 @@
       grid-template-columns: 1fr 1fr;
       gap: 16px;
     }
+    .field-row-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
 
     /* Array item */
     .array-item {
@@ -436,9 +441,147 @@
     [data-drag-item].drag-over-top { box-shadow: inset 0 3px 0 0 #4f9d69; }
     [data-drag-item].drag-over-bottom { box-shadow: inset 0 -3px 0 0 #4f9d69; }
 
+    /* Image previews */
+    .img-thumb-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+    .img-thumb-card {
+      position: relative;
+      width: 100px;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #fff;
+    }
+    .img-thumb-card img {
+      width: 100%;
+      height: 80px;
+      object-fit: cover;
+      display: block;
+    }
+    .img-thumb-card .img-thumb-name {
+      font-size: 10px;
+      color: #6b7280;
+      padding: 4px 6px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .img-thumb-card .img-thumb-remove {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      width: 20px;
+      height: 20px;
+      background: rgba(239,68,68,0.9);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      font-size: 12px;
+      line-height: 20px;
+      text-align: center;
+      cursor: pointer;
+      padding: 0;
+    }
+    .img-thumb-card .img-thumb-remove:hover { background: #dc2626; }
+
+    .img-preview-single {
+      max-width: 200px;
+      max-height: 120px;
+      object-fit: contain;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      margin-top: 6px;
+    }
+
+    /* Upload button */
+    .upload-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: #f0f8f4;
+      border: 1px dashed #4f9d69;
+      border-radius: 6px;
+      color: #4f9d69;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .upload-btn:hover { background: #e0f2e8; }
+    .upload-btn:disabled { opacity: 0.4; cursor: not-allowed; border-color: #d1d5db; color: #9ca3af; background: #f9fafb; }
+
+    /* Slug field */
+    .slug-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .slug-row input {
+      flex: 1;
+      font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+      font-size: 13px;
+      letter-spacing: 0.3px;
+    }
+    .slug-hint {
+      font-size: 11px;
+      color: #9ca3af;
+      font-style: italic;
+    }
+
+    /* Image upload with URL */
+    .img-url-upload {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .img-url-upload input { flex: 1; }
+
+    /* Monthly flowers table */
+    .flowers-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .flowers-table th {
+      text-align: left;
+      font-size: 12px;
+      font-weight: 600;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 8px 12px;
+      border-bottom: 2px solid #e5e7eb;
+    }
+    .flowers-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #f3f4f6;
+      vertical-align: middle;
+    }
+    .flowers-table .month-label {
+      font-weight: 600;
+      color: #374151;
+      white-space: nowrap;
+    }
+    .flowers-table input {
+      width: 100%;
+      padding: 6px 10px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .flowers-table input:focus {
+      outline: none;
+      border-color: #4f9d69;
+      box-shadow: 0 0 0 3px rgba(79,157,105,0.1);
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
-      .field-row { grid-template-columns: 1fr; }
+      .field-row, .field-row-3 { grid-template-columns: 1fr; }
       .tab-nav { padding: 8px 12px 0; }
       .tab-btn { padding: 8px 14px; font-size: 13px; }
       .editor-area { padding: 0 12px; margin: 12px auto; }
@@ -479,6 +622,7 @@
     <button class="tab-btn" data-tab="services">Services</button>
     <button class="tab-btn" data-tab="contact">Contact</button>
     <button class="tab-btn" data-tab="clients">Clients</button>
+    <button class="tab-btn" data-tab="monthlyFlowers">Misc</button>
   </div>
 
   <div class="editor-area" id="editor-area"></div>
@@ -519,6 +663,7 @@ const FILES = {
   services: { path: 'src/data/services.json', label: 'Services' },
   contact: { path: 'src/data/contact.json', label: 'Contact' },
   clients: { path: 'src/data/clients.json', label: 'Clients' },
+  monthlyFlowers: { path: 'src/data/monthlyFlowers.json', label: 'Monthly Flowers' },
 };
 
 // ─── State ────────────────────────────────────────────
@@ -526,6 +671,7 @@ let token = null;
 let currentTab = 'projects';
 let fileCache = {};
 let originalData = {};
+let pendingImageOps = []; // { repoPath, displayPath, base64, dataUrl }
 
 // ─── Auth ─────────────────────────────────────────────
 function startLogin() {
@@ -537,6 +683,7 @@ function logout() {
   token = null;
   fileCache = {};
   originalData = {};
+  pendingImageOps = [];
   document.getElementById('dashboard').classList.remove('visible');
   document.getElementById('login-screen').style.display = '';
 }
@@ -661,13 +808,15 @@ function getDirtyTabs() {
 
 function updateDirtyIndicators() {
   const dirty = getDirtyTabs();
+  const hasImageOps = pendingImageOps.length > 0;
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.classList.toggle('dirty', dirty.includes(btn.dataset.tab));
   });
   const deployBtn = document.getElementById('deploy-btn');
-  if (dirty.length > 0) {
+  const totalChanges = dirty.length + (hasImageOps ? 1 : 0);
+  if (totalChanges > 0) {
     deployBtn.disabled = false;
-    deployBtn.textContent = dirty.length > 1 ? `Deploy (${dirty.length} files)` : 'Deploy';
+    deployBtn.textContent = totalChanges > 1 ? `Deploy (${totalChanges} changes)` : 'Deploy';
   } else {
     deployBtn.disabled = true;
     deployBtn.textContent = 'Deploy';
@@ -684,6 +833,14 @@ function saveCurrentTab() {
 function revertChanges() {
   if (!currentTab || !originalData[currentTab]) return;
   if (!confirm('Revert all unsaved changes on this tab?')) return;
+  // Remove pending image ops related to this tab
+  if (currentTab === 'projects') {
+    pendingImageOps = pendingImageOps.filter(op => !op.repoPath.startsWith('public/media/portfolio/'));
+  } else if (currentTab === 'clients') {
+    pendingImageOps = pendingImageOps.filter(op => !op.repoPath.startsWith('public/media/clients/'));
+  } else if (currentTab === 'press') {
+    pendingImageOps = pendingImageOps.filter(op => !op.repoPath.startsWith('public/media/press/'));
+  }
   fileCache[currentTab].data = JSON.parse(JSON.stringify(originalData[currentTab]));
   renderEditor(currentTab);
   updateDirtyIndicators();
@@ -701,15 +858,21 @@ function deployAll() {
   if (!currentTab || !fileCache[currentTab]) return;
   collectFormData(currentTab);
   const dirty = getDirtyTabs();
-  if (dirty.length === 0) { setStatus('No changes to deploy', 'error'); return; }
-  showDeployModal(dirty);
+  const hasImageOps = pendingImageOps.length > 0;
+  if (dirty.length === 0 && !hasImageOps) { setStatus('No changes to deploy', 'error'); return; }
+  showDeployModal(dirty, hasImageOps);
 }
 
-function showDeployModal(dirtyTabs) {
+function showDeployModal(dirtyTabs, hasImageOps) {
   const changes = dirtyTabs.map(tab => `Update ${FILES[tab].label} data`);
+  if (hasImageOps) {
+    const uploadCount = pendingImageOps.length;
+    changes.push(`Upload ${uploadCount} image${uploadCount > 1 ? 's' : ''}`);
+  }
   document.getElementById('deploy-changes').innerHTML = changes.map(c => `<li>${escapeHtml(c)}</li>`).join('');
-  const labels = dirtyTabs.map(t => FILES[t].label.toLowerCase()).join(', ');
-  document.getElementById('deploy-message').value = `Update ${labels} content via admin`;
+  const labels = dirtyTabs.map(t => FILES[t].label.toLowerCase());
+  if (hasImageOps) labels.push('images');
+  document.getElementById('deploy-message').value = `Update ${labels.join(', ')} via admin`;
   document.getElementById('deploy-modal').style.display = '';
 }
 
@@ -729,6 +892,8 @@ async function executeDeploy() {
   try {
     const dirtyTabs = getDirtyTabs();
     const fileOps = [];
+
+    // JSON file changes
     for (const tab of dirtyTabs) {
       fileOps.push({
         path: FILES[tab].path,
@@ -736,8 +901,22 @@ async function executeDeploy() {
         encoding: 'utf-8',
       });
     }
+
+    // Pending image uploads
+    for (const op of pendingImageOps) {
+      fileOps.push({
+        path: op.repoPath,
+        content: op.base64,
+        encoding: 'base64',
+      });
+    }
+
     await batchCommit(message, fileOps);
 
+    // Clear pending image ops
+    pendingImageOps = [];
+
+    // Reload dirty tabs
     for (const tab of dirtyTabs) {
       delete fileCache[tab];
       delete originalData[tab];
@@ -765,14 +944,18 @@ async function batchCommit(message, fileOps) {
 
   const treeItems = [];
   for (const op of fileOps) {
-    const blobRes = await ghFetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/git/blobs`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ content: op.content, encoding: op.encoding }),
-    });
-    if (!blobRes.ok) throw new Error(`Failed to create blob for ${op.path}`);
-    const blob = await blobRes.json();
-    treeItems.push({ path: op.path, mode: '100644', type: 'blob', sha: blob.sha });
+    if (op.deleted) {
+      treeItems.push({ path: op.path, mode: '100644', type: 'blob', sha: null });
+    } else {
+      const blobRes = await ghFetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/git/blobs`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ content: op.content, encoding: op.encoding }),
+      });
+      if (!blobRes.ok) throw new Error(`Failed to create blob for ${op.path}`);
+      const blob = await blobRes.json();
+      treeItems.push({ path: op.path, mode: '100644', type: 'blob', sha: blob.sha });
+    }
   }
 
   const treeRes = await ghFetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/git/trees`, {
@@ -856,11 +1039,137 @@ function handleDragEnd() {
 
 function getDataArray(tab) {
   const data = fileCache[tab].data;
-  if (tab === 'projects' || tab === 'clients') return data;
+  if (tab === 'projects' || tab === 'clients' || tab === 'monthlyFlowers') return data;
   if (tab === 'press') return data.articles;
   if (tab === 'about') return data.sections;
   if (tab === 'services') return data.items;
   return data;
+}
+
+// ─── Image Upload Helpers ─────────────────────────────
+function readFileAsBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const dataUrl = reader.result;
+      const base64 = dataUrl.split(',')[1];
+      resolve({ base64, dataUrl });
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+function getPreviewUrl(displayPath) {
+  if (!displayPath) return '';
+  // Check pending ops first
+  const pending = pendingImageOps.find(op => op.displayPath === displayPath);
+  if (pending) return pending.dataUrl;
+  // External URL
+  if (displayPath.startsWith('http://') || displayPath.startsWith('https://')) return displayPath;
+  // Local path - served from same origin
+  return displayPath;
+}
+
+function toSlug(text) {
+  return text.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+}
+
+function getFileExt(filename) {
+  const parts = filename.split('.');
+  return parts.length > 1 ? parts.pop().toLowerCase() : 'jpg';
+}
+
+function extractSlugFromImages(imagePaths) {
+  if (!imagePaths || imagePaths.length === 0) return '';
+  const firstImg = imagePaths[0];
+  const filename = firstImg.split('/').pop();
+  return filename.replace(/\.\w+$/, '');
+}
+
+function getNextImageName(slug, existingCount, ext) {
+  if (existingCount === 0) return `${slug}.${ext}`;
+  return `${slug}${existingCount + 1}.${ext}`;
+}
+
+// Project image upload
+function triggerProjectImageUpload(i) {
+  const slugEl = document.querySelector(`[data-field="pj-${i}-slug"]`);
+  const slug = slugEl ? slugEl.value.trim() : '';
+  if (!slug) {
+    alert('Please set a project ID first before uploading images.');
+    return;
+  }
+  document.getElementById(`pj-${i}-file`).click();
+}
+
+async function handleProjectImageUpload(i, fileInput) {
+  const file = fileInput.files[0];
+  if (!file) return;
+  const slugEl = document.querySelector(`[data-field="pj-${i}-slug"]`);
+  const slug = slugEl.value.trim();
+  if (!slug) return;
+
+  collectFormData('projects');
+  const project = fileCache.projects.data[i];
+  const ext = getFileExt(file.name);
+  const imageName = getNextImageName(slug, project.imagePath.length, ext);
+  const displayPath = `/media/portfolio/${imageName}`;
+  const repoPath = `public/media/portfolio/${imageName}`;
+
+  const { base64, dataUrl } = await readFileAsBase64(file);
+  pendingImageOps.push({ repoPath, displayPath, base64, dataUrl });
+  project.imagePath.push(displayPath);
+  renderEditor('projects');
+  updateDirtyIndicators();
+  setStatus(`Queued image: ${imageName}`, 'success');
+  fileInput.value = '';
+}
+
+// Press image upload
+function triggerPressImageUpload(i) {
+  document.getElementById(`pr-${i}-file`).click();
+}
+
+async function handlePressImageUpload(i, fileInput) {
+  const file = fileInput.files[0];
+  if (!file) return;
+  collectFormData('press');
+  const ext = getFileExt(file.name);
+  const safeName = file.name.replace(/[^a-z0-9.-]/gi, '-').toLowerCase();
+  const displayPath = `/media/press/${safeName}`;
+  const repoPath = `public/media/press/${safeName}`;
+
+  const { base64, dataUrl } = await readFileAsBase64(file);
+  pendingImageOps.push({ repoPath, displayPath, base64, dataUrl });
+  fileCache.press.data.articles[i].image = displayPath;
+  renderEditor('press');
+  updateDirtyIndicators();
+  setStatus(`Queued press image: ${safeName}`, 'success');
+  fileInput.value = '';
+}
+
+// Client logo upload
+function triggerClientLogoUpload(i) {
+  document.getElementById(`cl-${i}-file`).click();
+}
+
+async function handleClientLogoUpload(i, fileInput) {
+  const file = fileInput.files[0];
+  if (!file) return;
+  collectFormData('clients');
+  const ext = getFileExt(file.name);
+  const safeName = file.name.replace(/[^a-z0-9.-]/gi, '-').toLowerCase();
+  const displayPath = `/media/clients/${safeName}`;
+  const repoPath = `public/media/clients/${safeName}`;
+
+  const { base64, dataUrl } = await readFileAsBase64(file);
+  pendingImageOps.push({ repoPath, displayPath, base64, dataUrl });
+  fileCache.clients.data[i].logo = displayPath;
+  renderEditor('clients');
+  updateDirtyIndicators();
+  setStatus(`Queued client logo: ${safeName}`, 'success');
+  fileInput.value = '';
 }
 
 // ─── Renderers ────────────────────────────────────────
@@ -874,10 +1183,11 @@ function renderEditor(tab) {
     case 'services': area.innerHTML = renderServicesEditor(data); break;
     case 'contact': area.innerHTML = renderContactEditor(data); break;
     case 'clients': area.innerHTML = renderClientsEditor(data); break;
+    case 'monthlyFlowers': area.innerHTML = renderMiscEditor(data); break;
   }
 }
 
-// Projects
+// ── Projects ──
 function renderProjectsEditor(data) {
   let html = `<div class="editor-card"><h3>Portfolio Projects (${data.length})</h3>
     <div class="search-bar">
@@ -893,12 +1203,21 @@ function renderProjectsEditor(data) {
 function renderProjectItem(item, i) {
   const title = item.title || '(untitled)';
   const categories = ['installation', 'workshop', 'gifting', 'other'];
-  const imagePaths = (item.imagePath || []).map((p, pi) =>
-    `<div class="image-path-item">
-      <input type="text" data-field="pj-${i}-img-${pi}" value="${escapeAttr(p)}">
-      <button class="btn-danger btn-small" onclick="removeProjectImage(${i},${pi})">&#215;</button>
-    </div>`
-  ).join('');
+  const slug = extractSlugFromImages(item.imagePath);
+
+  // Build image thumbnails
+  let imageHtml = '<div class="img-thumb-row">';
+  (item.imagePath || []).forEach((p, pi) => {
+    const previewUrl = getPreviewUrl(p);
+    const filename = p.split('/').pop();
+    imageHtml += `
+      <div class="img-thumb-card">
+        <img src="${escapeAttr(previewUrl)}" alt="${escapeAttr(filename)}" onerror="this.style.display='none'">
+        <div class="img-thumb-name">${escapeHtml(filename)}</div>
+        <button class="img-thumb-remove" onclick="event.stopPropagation();removeProjectImage(${i},${pi})" title="Remove">&#215;</button>
+      </div>`;
+  });
+  imageHtml += '</div>';
 
   return `
     <div class="collapsible-item" data-search="${escapeAttr((title + ' ' + (item.client||'') + ' ' + (item.category||'')).toLowerCase())}" data-drag-item draggable="true" ondragstart="handleDragStart(event,'projects',${i})" ondragover="handleDragOver(event)" ondrop="handleDrop(event,'projects',${i})" ondragend="handleDragEnd()">
@@ -913,6 +1232,13 @@ function renderProjectItem(item, i) {
       </div>
       <div class="collapsible-body">
         <div style="margin-top:12px">
+          <div class="field-group">
+            <label>Project ID (used for image naming)</label>
+            <div class="slug-row">
+              <input type="text" data-field="pj-${i}-slug" value="${escapeAttr(slug)}" placeholder="e.g. dior-exotic" oninput="this.value=toSlug(this.value)">
+            </div>
+            <span class="slug-hint">Type your ID here (spaces auto-convert to hyphens). Images will be named: id.jpg, id2.jpg, id3.jpg</span>
+          </div>
           <div class="field-row">
             <div class="field-group"><label>Title</label><input type="text" data-field="pj-${i}-title" value="${escapeAttr(item.title)}"></div>
             <div class="field-group"><label>Client</label><input type="text" data-field="pj-${i}-client" value="${escapeAttr(item.client)}"></div>
@@ -924,9 +1250,13 @@ function renderProjectItem(item, i) {
             <div class="field-group"><label>Date</label><input type="date" data-field="pj-${i}-date" value="${escapeAttr(item.date)}"></div>
           </div>
           <div class="field-group"><label>Description</label><textarea data-field="pj-${i}-desc">${escapeHtml(item.description)}</textarea></div>
-          <div class="field-group"><label>Image Paths</label>
-            <div id="pj-${i}-images">${imagePaths}</div>
-            <button class="btn-outline btn-small" onclick="addProjectImage(${i})" style="margin-top:4px">+ Add Image Path</button>
+          <div class="field-group">
+            <label>Images (${(item.imagePath||[]).length})</label>
+            ${imageHtml}
+            <div style="display:flex;gap:8px;align-items:center">
+              <button class="upload-btn" onclick="triggerProjectImageUpload(${i})">&#8593; Upload Image</button>
+              <input type="file" id="pj-${i}-file" accept="image/*" style="display:none" onchange="handleProjectImageUpload(${i}, this)">
+            </div>
           </div>
           <div style="text-align:right;margin-top:8px"><button class="btn-danger btn-small" onclick="removeProject(${i})">Delete Project</button></div>
         </div>
@@ -954,7 +1284,7 @@ function toggleCollapsible(summary) {
   summary.closest('.collapsible-item').classList.toggle('expanded');
 }
 
-// Press
+// ── Press ──
 function renderPressEditor(data) {
   let html = `<div class="editor-card"><h3>Press Settings</h3>
     <div class="field-group"><label>Intro Text</label><textarea data-field="press-intro">${escapeHtml(data.intro)}</textarea></div>
@@ -967,6 +1297,9 @@ function renderPressEditor(data) {
 }
 
 function renderPressItem(item, i) {
+  const previewUrl = getPreviewUrl(item.image);
+  const hasPreview = previewUrl && previewUrl.length > 0;
+
   return `
     <div class="array-item" data-drag-item draggable="true" ondragstart="handleDragStart(event,'press',${i})" ondragover="handleDragOver(event)" ondrop="handleDrop(event,'press',${i})" ondragend="handleDragEnd()">
       <div class="array-item-header">
@@ -984,11 +1317,19 @@ function renderPressItem(item, i) {
       <div class="field-group"><label>Subtitle</label><input type="text" data-field="pr-${i}-subtitle" value="${escapeAttr(item.subtitle)}"></div>
       <div class="field-group"><label>Description</label><textarea data-field="pr-${i}-desc">${escapeHtml(item.description)}</textarea></div>
       <div class="field-group"><label>URL</label><input type="text" data-field="pr-${i}-url" value="${escapeAttr(item.url)}"></div>
-      <div class="field-group"><label>Image URL</label><input type="text" data-field="pr-${i}-image" value="${escapeAttr(item.image)}"></div>
+      <div class="field-group">
+        <label>Image (URL or upload)</label>
+        <div class="img-url-upload">
+          <input type="text" data-field="pr-${i}-image" value="${escapeAttr(item.image)}" placeholder="Paste URL or upload...">
+          <button class="upload-btn btn-small" onclick="triggerPressImageUpload(${i})">&#8593; Upload</button>
+          <input type="file" id="pr-${i}-file" accept="image/*" style="display:none" onchange="handlePressImageUpload(${i}, this)">
+        </div>
+        ${hasPreview ? `<img src="${escapeAttr(previewUrl)}" class="img-preview-single" onerror="this.style.display='none'">` : ''}
+      </div>
     </div>`;
 }
 
-// About
+// ── About ──
 function renderAboutEditor(data) {
   let html = `<div class="editor-card"><h3>About Page Sections</h3><div id="about-items">`;
   data.sections.forEach((section, i) => { html += renderAboutSection(section, i); });
@@ -999,11 +1340,10 @@ function renderAboutEditor(data) {
 function renderAboutSection(section, i) {
   let contentHtml = '';
   if (section.paragraphs) {
-    contentHtml += `<div class="field-group"><label>Paragraphs</label><div id="about-${i}-paras">`;
-    section.paragraphs.forEach((p, pi) => {
-      contentHtml += `<div style="margin-bottom:8px;display:flex;gap:8px"><textarea data-field="about-${i}-p-${pi}" style="flex:1">${escapeHtml(p)}</textarea><button class="btn-danger btn-small" onclick="removeAboutParagraph(${i},${pi})">&#215;</button></div>`;
-    });
-    contentHtml += `</div><button class="btn-outline btn-small" onclick="addAboutParagraph(${i})">+ Add Paragraph</button></div>`;
+    const paragraphText = section.paragraphs.join('\n\n');
+    contentHtml += `<div class="field-group"><label>Paragraphs (separate with blank line)</label>
+      <textarea data-field="about-${i}-paras" style="min-height:120px">${escapeHtml(paragraphText)}</textarea>
+    </div>`;
   }
   if (section.listItems) {
     contentHtml += `<div class="field-group"><label>List Items</label><div id="about-${i}-list">`;
@@ -1027,7 +1367,7 @@ function renderAboutSection(section, i) {
     </div>`;
 }
 
-// Services
+// ── Services ──
 function renderServicesEditor(data) {
   let html = `<div class="editor-card"><h3>Services Page</h3>
     <div class="field-group"><label>Intro Text</label><textarea data-field="svc-intro">${escapeHtml(data.intro)}</textarea></div>
@@ -1043,7 +1383,7 @@ function renderServicesEditor(data) {
   return html;
 }
 
-// Contact
+// ── Contact ──
 function renderContactEditor(data) {
   let html = `<div class="editor-card"><h3>Contact Information</h3>
     <div class="field-row">
@@ -1076,22 +1416,55 @@ function renderContactEditor(data) {
   return html;
 }
 
-// Clients
+// ── Clients ──
 function renderClientsEditor(data) {
   let html = `<div class="editor-card"><h3>Featured Clients (${data.length})</h3><div id="client-items">`;
   data.forEach((item, i) => {
-    html += `<div class="array-item" style="padding:10px" data-drag-item draggable="true" ondragstart="handleDragStart(event,'clients',${i})" ondragover="handleDragOver(event)" ondrop="handleDrop(event,'clients',${i})" ondragend="handleDragEnd()">
-      <div class="field-row">
-        <div class="field-group" style="margin-bottom:0">
-          <label><span class="drag-handle" style="font-size:14px">&#x2807;</span> Name</label>
-          <input type="text" data-field="cl-${i}-name" value="${escapeAttr(item.name)}">
+    const previewUrl = getPreviewUrl(item.logo);
+    const hasPreview = previewUrl && previewUrl.length > 0;
+
+    html += `<div class="array-item" style="padding:12px" data-drag-item draggable="true" ondragstart="handleDragStart(event,'clients',${i})" ondragover="handleDragOver(event)" ondrop="handleDrop(event,'clients',${i})" ondragend="handleDragEnd()">
+      <div style="display:flex;gap:16px;align-items:center">
+        <span class="drag-handle" style="font-size:14px">&#x2807;</span>
+        ${hasPreview ? `<img src="${escapeAttr(previewUrl)}" style="width:48px;height:48px;object-fit:contain;border:1px solid #e5e7eb;border-radius:6px;background:#fff" onerror="this.style.display='none'">` : '<div style="width:48px;height:48px;border:1px dashed #d1d5db;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#9ca3af;font-size:11px">No logo</div>'}
+        <div style="flex:1">
+          <div class="field-group" style="margin-bottom:8px">
+            <label>Name</label>
+            <input type="text" data-field="cl-${i}-name" value="${escapeAttr(item.name)}">
+          </div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <span style="font-size:12px;color:#6b7280">${escapeHtml(item.logo || 'No logo set')}</span>
+            <button class="upload-btn btn-small" onclick="triggerClientLogoUpload(${i})">&#8593; Upload Logo</button>
+            <input type="file" id="cl-${i}-file" accept="image/*,.svg" style="display:none" onchange="handleClientLogoUpload(${i}, this)">
+          </div>
         </div>
-        <div class="field-group" style="margin-bottom:0"><label>Logo Path</label><input type="text" data-field="cl-${i}-logo" value="${escapeAttr(item.logo)}"></div>
+        <button class="btn-danger btn-small" onclick="removeClient(${i})">Delete</button>
       </div>
-      <div style="text-align:right;margin-top:6px"><button class="btn-danger btn-small" onclick="removeClient(${i})">Delete</button></div>
     </div>`;
   });
   html += `</div><div class="array-controls"><button class="btn-outline btn-small" onclick="addClient()">+ Add Client</button></div></div>`;
+  return html;
+}
+
+// ── Misc (Monthly Flowers) ──
+function renderMiscEditor(data) {
+  let html = `<div class="editor-card"><h3>Monthly Flowers</h3>
+    <p style="font-size:13px;color:#6b7280;margin-bottom:16px">Edit the flower name displayed for each month in the site header.</p>
+    <table class="flowers-table">
+      <thead><tr>
+        <th>Month</th>
+        <th>English Flower Name</th>
+        <th>Chinese Flower Name</th>
+      </tr></thead>
+      <tbody>`;
+  data.forEach((item, i) => {
+    html += `<tr>
+      <td class="month-label">${escapeHtml(item.zh_month)} ${escapeHtml(item.month.charAt(0).toUpperCase() + item.month.slice(1))}</td>
+      <td><input type="text" data-field="mf-${i}-flower" value="${escapeAttr(item.flower)}"></td>
+      <td><input type="text" data-field="mf-${i}-zh_flower" value="${escapeAttr(item.zh_flower)}"></td>
+    </tr>`;
+  });
+  html += `</tbody></table></div>`;
   return html;
 }
 
@@ -1110,20 +1483,20 @@ function collectFormData(tab) {
     case 'services': collectServices(data); break;
     case 'contact': collectContact(data); break;
     case 'clients': collectClients(data); break;
+    case 'monthlyFlowers': collectMonthlyFlowers(data); break;
   }
 }
 
 function collectProjects(data) {
   const items = document.querySelectorAll('#project-items > .collapsible-item');
   const result = Array.from(items).map((el, i) => {
-    const imgContainer = document.getElementById(`pj-${i}-images`);
-    const imgInputs = imgContainer ? imgContainer.querySelectorAll('input') : [];
-    const imagePath = Array.from(imgInputs).map(inp => inp.value).filter(Boolean);
+    // Keep existing imagePaths (they're managed via upload/remove, not form inputs)
+    const existingPaths = data[i]?.imagePath || [];
     return {
       id: data[i]?.id || i + 1,
       title: getVal(`pj-${i}-title`),
       category: getVal(`pj-${i}-category`),
-      imagePath,
+      imagePath: existingPaths,
       date: getVal(`pj-${i}-date`),
       client: getVal(`pj-${i}-client`),
       description: getVal(`pj-${i}-desc`),
@@ -1151,11 +1524,12 @@ function collectAbout(data) {
   const items = document.querySelectorAll('#about-items > .array-item');
   data.sections = Array.from(items).map((el, i) => {
     const section = { heading: getVal(`about-${i}-heading`) };
-    const parasContainer = document.getElementById(`about-${i}-paras`);
-    if (parasContainer) {
-      const paraInputs = parasContainer.querySelectorAll('textarea');
-      section.paragraphs = Array.from(paraInputs).map(t => t.value);
+    // Paragraphs: split by double newline
+    const parasEl = document.querySelector(`[data-field="about-${i}-paras"]`);
+    if (parasEl) {
+      section.paragraphs = parasEl.value.split(/\n\s*\n/).map(p => p.trim()).filter(Boolean);
     }
+    // List items
     const listContainer = document.getElementById(`about-${i}-list`);
     if (listContainer) {
       const listInputs = listContainer.querySelectorAll('input');
@@ -1191,34 +1565,58 @@ function collectClients(data) {
   const items = document.querySelectorAll('#client-items > .array-item');
   const result = Array.from(items).map((el, i) => ({
     name: getVal(`cl-${i}-name`),
-    logo: getVal(`cl-${i}-logo`),
+    logo: data[i]?.logo || '', // Logo managed via upload, not form input
   }));
   fileCache.clients.data = result;
+}
+
+function collectMonthlyFlowers(data) {
+  data.forEach((item, i) => {
+    item.flower = getVal(`mf-${i}-flower`);
+    item.zh_flower = getVal(`mf-${i}-zh_flower`);
+  });
 }
 
 // ─── Array Mutations ──────────────────────────────────
 function addProject() {
   collectFormData('projects');
   const data = fileCache.projects.data;
-  const maxId = data.reduce((max, p) => Math.max(max, p.id), 0);
+  const maxId = data.reduce((max, p) => Math.max(max, typeof p.id === 'number' ? p.id : 0), 0);
   data.push({ id: maxId + 1, title: '', category: 'installation', imagePath: [], date: '', client: '', description: '' });
   renderEditor('projects');
+  // Auto-expand the new item
+  const items = document.querySelectorAll('.collapsible-item');
+  const last = items[items.length - 1];
+  if (last) last.classList.add('expanded');
 }
+
 function removeProject(i) {
   if (!confirm('Delete this project?')) return;
   collectFormData('projects');
+  // Remove pending image ops for this project's images
+  const project = fileCache.projects.data[i];
+  if (project && project.imagePath) {
+    project.imagePath.forEach(p => {
+      const repoPath = 'public' + p;
+      pendingImageOps = pendingImageOps.filter(op => op.repoPath !== repoPath);
+    });
+  }
   fileCache.projects.data.splice(i, 1);
   renderEditor('projects');
 }
-function addProjectImage(i) {
-  collectFormData('projects');
-  fileCache.projects.data[i].imagePath.push('');
-  renderEditor('projects');
-}
+
 function removeProjectImage(i, pi) {
   collectFormData('projects');
-  fileCache.projects.data[i].imagePath.splice(pi, 1);
+  const project = fileCache.projects.data[i];
+  const removedPath = project.imagePath[pi];
+  // Remove from pending ops if it was a new upload
+  if (removedPath) {
+    const repoPath = 'public' + removedPath;
+    pendingImageOps = pendingImageOps.filter(op => op.repoPath !== repoPath);
+  }
+  project.imagePath.splice(pi, 1);
   renderEditor('projects');
+  updateDirtyIndicators();
 }
 
 function addPressItem() {
@@ -1226,6 +1624,7 @@ function addPressItem() {
   fileCache.press.data.articles.push({ source: '', title: '', subtitle: '', description: '', url: '', date: '', image: '' });
   renderEditor('press');
 }
+
 function removePressItem(i) {
   collectFormData('press');
   fileCache.press.data.articles.splice(i, 1);
@@ -1237,28 +1636,20 @@ function addAboutSection() {
   fileCache.about.data.sections.push({ heading: '', paragraphs: [''] });
   renderEditor('about');
 }
+
 function removeAboutSection(i) {
   collectFormData('about');
   fileCache.about.data.sections.splice(i, 1);
   renderEditor('about');
 }
-function addAboutParagraph(i) {
-  collectFormData('about');
-  if (!fileCache.about.data.sections[i].paragraphs) fileCache.about.data.sections[i].paragraphs = [];
-  fileCache.about.data.sections[i].paragraphs.push('');
-  renderEditor('about');
-}
-function removeAboutParagraph(i, pi) {
-  collectFormData('about');
-  fileCache.about.data.sections[i].paragraphs.splice(pi, 1);
-  renderEditor('about');
-}
+
 function addAboutListItem(i) {
   collectFormData('about');
   if (!fileCache.about.data.sections[i].listItems) fileCache.about.data.sections[i].listItems = [];
   fileCache.about.data.sections[i].listItems.push('');
   renderEditor('about');
 }
+
 function removeAboutListItem(i, li) {
   collectFormData('about');
   fileCache.about.data.sections[i].listItems.splice(li, 1);
@@ -1270,6 +1661,7 @@ function addServiceItem() {
   fileCache.services.data.items.push('');
   renderEditor('services');
 }
+
 function removeServiceItem(i) {
   collectFormData('services');
   fileCache.services.data.items.splice(i, 1);
@@ -1281,16 +1673,19 @@ function addHour() {
   fileCache.contact.data.hours.push('');
   renderEditor('contact');
 }
+
 function removeHour(i) {
   collectFormData('contact');
   fileCache.contact.data.hours.splice(i, 1);
   renderEditor('contact');
 }
+
 function addSocialLink() {
   collectFormData('contact');
   fileCache.contact.data.socialLinks.push({ name: '', url: '' });
   renderEditor('contact');
 }
+
 function removeSocialLink(i) {
   collectFormData('contact');
   fileCache.contact.data.socialLinks.splice(i, 1);
@@ -1302,6 +1697,7 @@ function addClient() {
   fileCache.clients.data.push({ name: '', logo: '' });
   renderEditor('clients');
 }
+
 function removeClient(i) {
   collectFormData('clients');
   fileCache.clients.data.splice(i, 1);
